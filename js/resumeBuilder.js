@@ -64,7 +64,7 @@ var projects = {
             url: "https://itunes.apple.com/us/app/salon-iris-salon-appointment-book-pos-software/id398253762?mt=8"
         }
     ]
-}
+};
 
 var bio = {
     name: "Adam Oberhausen",
@@ -83,8 +83,7 @@ var bio = {
         linkedin: "https://www.linkedin.com/in/adam-oberhausen/"
     },
     skills: ["management", "certified scrum master", "certified aws solutions architect", "devops", "html-css-javascript", ".net", "sql"],
-    bioPic: "images/adam-oberhausen.jpg"
-}
+};
 
 var education = {
     schools: [{
@@ -131,7 +130,7 @@ bio.display = function() {
     HTMLskillsStart = HTMLskillsStart.replace('<ul id="skills" class="flex-column"></ul>', '<ul id="skills" class="flex-column">' + formattedSkills + '</ul>');
     console.log(HTMLskillsStart);
     $("#header").append(HTMLskillsStart);
-}
+};
 
 bio.display();
 
@@ -150,12 +149,12 @@ work.display = function() {
         var formattedworkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
         $(".work-entry:last").append(formattedworkDescription);
     }
-}
+};
 
 work.display();
 
 function inName(name) {
-    nameArray = name.split(" ")
+    nameArray = name.split(" ");
     var firstName = nameArray[0].toLowerCase();
     console.log(firstName);
     var firstNameFirstLetter = firstName.charAt(0).toUpperCase();
@@ -187,7 +186,7 @@ projects.display = function() {
             }
         }
     }
-}
+};
 
 projects.display();
 
@@ -227,7 +226,7 @@ education.display = function() {
         var formattedonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
         $(".education-entry:last").append(formattedonlineDates);
     }
-}
+};
 
 education.display();
 
@@ -246,6 +245,6 @@ bio.displayFooter = function() {
     var formattedGitHub = HTMLfooterGithub.replace("#", bio.contacts.githublink);
     console.log(formattedGitHub);
     $("#footerContacts").append(formattedGitHub);
-}
+};
 
 bio.displayFooter();
