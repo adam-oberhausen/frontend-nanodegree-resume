@@ -2,7 +2,13 @@ body,
 div,
 ul,
 li,
-p,
+p
+ {
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -11,7 +17,7 @@ h5,
 h6 {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bungee", sans-serif;
 }
 
 .clear-fix {
@@ -26,15 +32,14 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #0C4761;
   line-height: 48px;
   display: inline;
 }
 
 h2 {
-  font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: #5DA4BE;
   line-height: 29px;
   padding: 10px;
 }
@@ -42,7 +47,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: #0C4761;
   line-height: 22px;
 }
 
@@ -58,14 +63,12 @@ h3,
 h4,
 h5 {
   padding: 10px 5%;
-
 }
-
 
 .date-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #708fdd;
   line-height: 16px;
   float: left;
 }
@@ -73,7 +76,7 @@ h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #708fdd;
   line-height: 16px;
   float: right;
 
@@ -86,7 +89,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #0C4761;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -100,40 +103,36 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
-  display: none;
+  color: #0C4761;
 }
 
-.orange {
-  background-color: #f5ae23;
-}
-
-.orange-text {
-  color: #f5ae23;
+.yellow-text {
+  color: #e8d20e;
+  float: left;
 }
 
 .white-text {
+  float: none;
   font-weight: bold;
   color: #fff;
 }
 
 .gray {
   background-color: #f3f3f3;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   clear: both;
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #7B818D;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #7B818D;
+  padding-bottom: 20px;
 }
 
 .flex-box {
-  display: -webkit-flex;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -158,21 +157,51 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
   width: 200px;
-  display: none;
-}
-
-img {
-  padding: 10px;
+  height: 200px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 100px;
+  opacity: 0.9;
+  -webkit-box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+  vertical-align: bottom;
 }
 
 span {
-  padding: 5px;
+  color: #e8d20e;
+  padding-left: 5px;
 }
 
-#lets-connect {
+.lets-connect {
   text-align: center;
+  color: #e8d20e;
+}
+
+[class*="zocial-"]:before {
+  color: #0C4761;
+  display: inline-block;
+  font-family: 'zocial', sans-serif;
+  text-shadow: 3px 3px 3px #aaa;
+  font-size: 2em;
+  width: 1em;
+}
+
+#map {
+  display: block;
+  height: 400px;
+  margin-top: 0;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+}
+
+#mapDiv {
+  height: 90%;
+  width: 100%;
+  margin-bottom: 2%;
+  overflow: visible;
 }
 
 /* Media queries to handle various device widths */
@@ -184,8 +213,11 @@ span {
 }
 
 @media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
+  #name {
+    display: block;
+  }
+  .welcome-message {
+    display: block;
   }
 }
 
@@ -193,24 +225,26 @@ span {
   #lets-connect {
     margin-top: 10%;
   }
+  .welcome-message {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #lets-connect {
+    margin-top: 0;
+  }
   .biopic {
-    width: 150px;
+    margin-left: calc((100% - 200px)/2);
+    display: block;
+    float: none;
   }
   .welcome-message {
     display: none;
   }
-}
-
-#map {
-  display: block;
-  height: 100%;
-  margin: 0 5%;
-}
-
-#mapDiv {
-  height: 400px;
-  width: 100%;
-  padding-bottom: 5%;
+  span {
+    float: left;
+  }
 }
 
 @media only screen and (min-width: 750px) {
