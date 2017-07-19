@@ -39,28 +39,28 @@ var projects = {
             title: "Responsive Design",
             dates: "May 2017",
             description: "A website that demonstrates responsive design patterns using the Bootstrap framework, HTML, and CSS.  This project was part of the Udacity Front-End Web Developer Nanodegree program.",
-            images: [""],
+            images: ["images/responsive-design-portfolio.jpg"],
             url: "https://github.com/adam-oberhausen/portfolio-site"
         },
         {
             title: "CI/CD with Visual Studio Team Services, Jenkins and AWS",
             dates: "January 2017",
             description: "This project builds upon the previous project where we migrated DaySmart's production infrastructure to AWS US-East Region. This was a multi-phased project with the objective of creating a continous integration/continuous delivery pipeline using AWS CloudFormation and Jenkins.  The successful completion of this project resulted in a automated system where upon check-in of new code, DaySmart's web applications are automatically deployed and tested in development and staging environments. Production deployments are coordinated with a single button click from within the Jenkins interface.",
-            images: [""],
+            images: ["images/ci-cd.jpg"],
             url: "https://aws.amazon.com/getting-started/projects/set-up-ci-cd-pipeline/"
         },
         {
             title: "Migrate DaySmart Web Applications & Databases From On-Premise to AWS",
             dates: "April 2015",
             description: "For this project, I switched roles within the organization in order to head up the initiative of migrating our on-premise infrastructure to AWS US-East Region.  This was a multi-phased project that entailed making our applications highly available, loosely coupled, and auto-scaling. An additional component of the project was to migrate our on-premise SQL database envrionment into AWS Relational Database Service (RDS).  The sucessful completion of this project resulted in service availability > 99.99% uptime for all production infrastructure and a significant cost savings to the business.",
-            images: [""],
+            images: ["images/aws.jpg"],
             url: "https://aws.amazon.com/"
         },
         {
             title: "Salon Iris iPhone App",
             dates: "2012",
             description: "An iPhone app written in Objective-C that allows users of DaySmart's desktop scheduling application to connect remotely to their on-premise SQL database from their Apple device (iPhone or iPad) to perform various business functions.",
-            images: [""],
+            images: ["images/salon-iris-app.jpg"],
             url: "https://itunes.apple.com/us/app/salon-iris-salon-appointment-book-pos-software/id398253762?mt=8"
         }
     ]
@@ -70,7 +70,7 @@ var bio = {
     name: "Adam Oberhausen",
     role: "Software Development, DevOps, Scrum Master, Web Development",
     welcomeMessage: "A full-stack engineer with expertise in software development, devops, and cloud computing",
-    bioPic: "images/adam-oberhausen.jpg",
+    biopic: "images/adam-oberhausen.jpg",
     contacts: {
         mobile: "734.644.9099",
         email: "aoberhau@gmail.com",
@@ -108,19 +108,19 @@ bio.display = function() {
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $("#header").append(formattedRole);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    $("#topContacts").append(formattedLocation);
+    $("#topContacts, #footerContacts").append(formattedLocation);
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    $("#topContacts").append(formattedEmail);
+    $("#topContacts, #footerContacts").append(formattedEmail);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    $("#topContacts").append(formattedTwitter);
+    $("#topContacts, #footerContacts").append(formattedTwitter);
     var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-    $("#topContacts").append(formattedGitHub);
+    $("#topContacts, #footerContacts").append(formattedGitHub);
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    $("#topContacts").append(formattedMobile);
+    $("#topContacts, #footerContacts").append(formattedMobile);
     var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").append(formattedWelcomeMessage);
-    var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
-    $("#header").append(formattedBioPic);
+    var formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
+    $("#header").append(formattedbioPic);
 
     var formattedSkills = "";
     for (i = 0; i < bio.skills.length; i++) {
@@ -128,8 +128,16 @@ bio.display = function() {
     }
 
     HTMLskillsStart = HTMLskillsStart.replace('<ul id="skills" class="flex-column"></ul>', '<ul id="skills" class="flex-column">' + formattedSkills + '</ul>');
-    console.log(HTMLskillsStart);
     $("#header").append(HTMLskillsStart);
+
+    formattedTwitter = HTMLfooterTwitter.replace("#", bio.contacts.twitterlink);
+    $("#footerZocial").append(formattedTwitter);
+    formattedLinkedIn = HTMLfooterLinkedIn.replace("#", bio.contacts.linkedin);
+    $("#footerZocial").append(formattedLinkedIn);
+    formattedEmail = HTMLfooterEmail.replace("#", bio.contacts.emaillink);
+    $("#footerZocial").append(formattedEmail);
+    formattedGitHub = HTMLfooterGithub.replace("#", bio.contacts.githublink);
+    $("#footerZocial").append(formattedGitHub);
 };
 
 bio.display();
@@ -180,7 +188,7 @@ projects.display = function() {
         $(".project-entry:last").append(formattedprojectDescription);
 
         if (projects.projects[i].images.length > 0) {
-            for (j = 0; j < projects.projects[i].images; j++) {
+            for (j = 0; j < projects.projects[i].images.length; j++) {
                 var formattedprojectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
                 $(".project-entry:last").append(formattedprojectImage);
             }
@@ -231,20 +239,3 @@ education.display = function() {
 education.display();
 
 $("#mapDiv").append(googleMap);
-
-bio.displayFooter = function() {
-    var formattedTwitter = HTMLfooterTwitter.replace("#", bio.contacts.twitterlink);
-    console.log(formattedTwitter);
-    $("#footerContacts").append(formattedTwitter);
-    var formattedLinkedIn = HTMLfooterLinkedIn.replace("#", bio.contacts.linkedin);
-    console.log(formattedLinkedIn);
-    $("#footerContacts").append(formattedLinkedIn);
-    var formattedEmail = HTMLfooterEmail.replace("#", bio.contacts.emaillink);
-    console.log(formattedEmail);
-    $("#footerContacts").append(formattedEmail);
-    var formattedGitHub = HTMLfooterGithub.replace("#", bio.contacts.githublink);
-    console.log(formattedGitHub);
-    $("#footerContacts").append(formattedGitHub);
-};
-
-bio.displayFooter();
